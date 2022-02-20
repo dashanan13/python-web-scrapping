@@ -1,4 +1,6 @@
 from urllib.request import urlopen
+from datetime import datetime
+from google.cloud import storage
 import csv 
 
 def parsehtml(parseURL, nameStr, priceStr):
@@ -94,6 +96,7 @@ for urlindex in range(len(product_catagories)):
 product_listings
 
 #Writing to CSV
+print("Writing to local file")
 
 # field names 
 fields = ['Product', 'Cost', 'URL'] 
@@ -112,3 +115,17 @@ with open(filename, 'w') as csvfile:
     csvwriter.writerow(fields) 
     # writing the data rows 
     csvwriter.writerows(rows)
+
+#Uploading to a GCP bucket
+print("Uploading to a GCP Bucket")
+storage_client = storage.Client.create_anonymous_client()
+
+bucketname = 'webscrapeme'
+targetblobfilename = "productlistings-" + (str(datetime.now()).replace(" ", "-").replace(":", "-").split("."))[0] + ".csv"
+
+bucket = storage_client.bucket(bucketname)
+blob = bucket.blob(targetblobfilename)
+
+blob.upload_from_filename('product_listings.csv')
+
+print("Report can be accessed at: " + str(blob.public_url))
