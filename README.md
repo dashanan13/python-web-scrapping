@@ -27,3 +27,6 @@ This opens a new sub window that can give you an idea about what tags have infor
         - Crash and burn container, attached: docker run -it --rm --name=webscrap webscrapping:1.0
         - Crash and burn container, detached: docker run -d --rm --name=webscrap webscrapping:1.0
         - Normal container, attached: docker run -it --name=webscrap webscrapping:1.0
+
+## Notes: 
+The public bucket used in the code has been deleted, please use your own bucket.
