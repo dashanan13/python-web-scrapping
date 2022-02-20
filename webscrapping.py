@@ -120,6 +120,7 @@ with open(filename, 'w') as csvfile:
 print("Uploading to a GCP Bucket")
 storage_client = storage.Client.create_anonymous_client()
 
+#!!!!! THIS BUCKET NAME IS FROM MY GCP SUBSCRIPTION, USE YOUR OWN BUCKET!!!!!
 bucketname = 'webscrapeme'
 targetblobfilename = "productlistings-" + (str(datetime.now()).replace(" ", "-").replace(":", "-").split("."))[0] + ".csv"
 
