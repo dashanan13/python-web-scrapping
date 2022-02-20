@@ -1,4 +1,5 @@
 from urllib.request import urlopen
+import csv 
 
 def parsehtml(parseURL, nameStr, priceStr):
     
@@ -81,7 +82,7 @@ backup = list(set(backup))
 
 product_catagories = backup
 
-print("Assembling Data")
+print("Assembling Data from each HTML page")
 product_listings = []
 for urlindex in range(len(product_catagories)):
     #print("URL : " + str(urlindex) + " >> " + product_catagories[urlindex])
@@ -91,3 +92,23 @@ for urlindex in range(len(product_catagories)):
         product_listings.append([product_catagories[urlindex], name, price])
         
 product_listings
+
+#Writing to CSV
+
+# field names 
+fields = ['Product', 'Cost', 'URL'] 
+    
+# data rows of csv file 
+rows = product_listings
+    
+# name of csv file 
+filename = "product_listings.csv"
+    
+# writing to csv file 
+with open(filename, 'w') as csvfile: 
+    # creating a csv writer object 
+    csvwriter = csv.writer(csvfile)         
+    # writing the fields 
+    csvwriter.writerow(fields) 
+    # writing the data rows 
+    csvwriter.writerows(rows)
