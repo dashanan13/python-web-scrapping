@@ -1,14 +1,15 @@
-**Python Webscrapping prtoject**
+# **Python Webscrapping project**
 
 ***This project is intended to showcase python capabilities to scrape websites with native functions***
 
-#Background
+## **Background**
+
 In order to extract information from a Webpage it is important ot check fhow information is structured on the page.
 It is possible to check the HTML of the page by opening it in chrome or edge browser, right click on it and select "inspect".
 This opens a new sub window that can give you an idea about what tags have informatino you need.
 
-How to use the code
-1. Execute it on local machine or a virtual machine:
+## **How to use the code**
+###### 1. Execute it natively on a local machine or a virtual machine:
     - Pre requsites: Python3
     - Install the required libraries, to upload files to GCP via: 
         - pip install google.cloud
@@ -17,8 +18,10 @@ How to use the code
     - Change directory to the repository folder
     - Execute: python3 webscrapping.py
 
-2. Execute it as a Docker container:
+###### 2. Execute it as a Docker container:
     - Pre requsites: Python3 and Docker
+    - Clone this repository
+    - Change directory to the repository folder
     - Create an Image out of Docker file: docker build -t webscrapping:1.0 ./PythonDemo/python-web-scrapping
     - Execute the container based on the image
         - Crash and burn container, attached: docker run -it --rm --name=webscrap webscrapping:1.0
